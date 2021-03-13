@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.go.task.model.Projeto;
 import com.go.task.model.input.ProjetoInput;
+import com.go.task.model.output.ProjetoMenuList;
 import com.go.task.service.ProjetoService;
 
 @RestController
@@ -49,6 +50,13 @@ public class ProjetoController {
 	public ResponseEntity<Void> excluir(@PathVariable Long id) {
 		projetoService.excluir(id);
 		return ResponseEntity.ok().build();
+	}
+	
+	
+	
+	@GetMapping("/projetosMenuList")
+	public ResponseEntity<List<ProjetoMenuList>> getProjetosMenuList() {
+		return ResponseEntity.ok(projetoService.getProjetosMenuList());
 	}
 
 }

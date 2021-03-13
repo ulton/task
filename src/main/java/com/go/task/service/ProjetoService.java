@@ -1,6 +1,7 @@
 package com.go.task.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,7 @@ import com.go.task.exception.InternalServerErrorException;
 import com.go.task.model.Projeto;
 import com.go.task.model.Tarefa;
 import com.go.task.model.input.ProjetoInput;
+import com.go.task.model.output.ProjetoMenuList;
 import com.go.task.repository.ProjetoRepository;
 
 @Service
@@ -95,6 +97,22 @@ public class ProjetoService {
 		}
 
 		return false;
+	}
+
+	public List<ProjetoMenuList> getProjetosMenuList() {
+		
+		List<Projeto> findAll = findAll();
+		
+		List<ProjetoMenuList> projsMenu = new ArrayList<>();
+		
+		findAll.forEach(p -> {
+			ProjetoMenuList projMenu = new ProjetoMenuList();
+			projMenu.setId(p.getId());
+			projMenu.setNome(p.getNome());
+			projsMenu.add(projMenu );
+		});
+		
+		return projsMenu;
 	}
 
 }
