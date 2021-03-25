@@ -18,7 +18,6 @@ import com.go.task.repository.ProjetoRepository;
 import com.go.task.service.ProjetoService;
 import com.go.task.util.ProjetoCreator;
 
-// https://github.com/devdojobr/springboot2-essentials/blob/video34/src/test/java/academy/devdojo/springboot2/controller/AnimeControllerTest.java
 @ExtendWith(SpringExtension.class)
 public class ProjetoServiceTeste {
 
@@ -31,42 +30,23 @@ public class ProjetoServiceTeste {
 	@BeforeEach
 	public void setup() {
 
-		BDDMockito.when(projRepoMock.save(ArgumentMatchers.any(Projeto.class)))
+		BDDMockito.when(projRepoMock
+				.save(ArgumentMatchers.any(Projeto.class)))
 				.thenReturn(ProjetoCreator.createValidProjeto());
 
-		// public Projeto findById(Long id)
 		BDDMockito.when(projRepoMock
 				.findById(ArgumentMatchers.eq(200L))).thenReturn(null);
 
-		// public Projeto findById(Long id)
-		BDDMockito.when(projRepoMock.findById(ArgumentMatchers.eq(1L)))
+		BDDMockito.when(projRepoMock
+				.findById(ArgumentMatchers.eq(1L)))
 				.thenReturn(Optional.of(ProjetoCreator.createValidProjeto()));
 
-		// public List<Projeto> findAll()
-		BDDMockito.when(projRepoMock.findAll())
+		BDDMockito.when(projRepoMock
+				.findAll())
 				.thenReturn(List.of(ProjetoCreator.createValidProjeto()));
 
-		// public void alterar(Projeto projeto)
-		// BDDMockito.when(projetoRepository.save(null))
-
-		// public void excluir(Long id)
-		//BDDMockito.verify(projRepoMock).delete(ArgumentMatchers.any(Projeto.class));
 	}
 
-//	@Test
-//	void save_returnProjeto_WhenSuccessful() {
-//
-//		Projeto projeto = ProjetoCreator.createProjetoToBeSaved();
-//		Projeto save = service.save(projeto);
-//
-//		Assertions.assertThat(save)
-//			.isNotNull();
-//
-//		Assertions.assertThat(projeto.getNome())
-//			.isEqualTo(save.getNome());
-//	}
-
-	// public List<Projeto> findAll()
 	@Test
 	void findAll_returnListojProjeto_WhenSucessful() {
 		
@@ -82,7 +62,6 @@ public class ProjetoServiceTeste {
 	}
 	
 	
-	// public Projeto findById(Long id)
 	@Test
 	void findById_returnProjeto_WhenSucessful() {
 		
@@ -95,7 +74,6 @@ public class ProjetoServiceTeste {
 			.isEqualTo(projetoExpected);
 	}
 	
-	// public Projeto findById(Long id)
 	@Test
 	void findById_returnNull_WhenProjetoIsNotFound() {
 		
@@ -105,14 +83,11 @@ public class ProjetoServiceTeste {
 			.isNull();
 	}
 
-	
-	// public Projeto alterar(Projeto projeto)
 	@Test
 	void alterar_returnProjeto_WhenSucessful() {
 		
 	}
 	
-	// public void excluir(Long id)
 	@Test
 	void excluir_returnVoid_WhenSucessful() {
 		
