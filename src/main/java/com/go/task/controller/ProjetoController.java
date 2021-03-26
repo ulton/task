@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.go.task.model.Projeto;
+import com.go.task.model.Tarefa;
 import com.go.task.model.input.ProjetoInput;
 import com.go.task.model.output.ProjetoMenuList;
 import com.go.task.service.ProjetoService;
@@ -38,6 +39,11 @@ public class ProjetoController {
 	@GetMapping("/all")
 	public ResponseEntity<List<Projeto>> buscarTodos() {
 		return ResponseEntity.ok(projetoService.findAll());
+	}
+	
+	@GetMapping("/{id}/tarefas")
+	public ResponseEntity<List<Tarefa>> bustarTarefasDoProjeto(@PathVariable Long id) {
+		return ResponseEntity.ok(projetoService.findTarefas(id));
 	}
 
 	@PutMapping

@@ -29,7 +29,7 @@ public class ProjetoService {
 	
 	@Autowired
 	private ModelMapper modelMapper;
-
+	
 	public Projeto save(ProjetoInput view) {
 		
 		Projeto projeto = modelMapper.map(view, Projeto.class);
@@ -113,6 +113,10 @@ public class ProjetoService {
 		});
 		
 		return projsMenu;
+	}
+
+	public List<Tarefa> findTarefas(Long id) {
+		return tarefaService.findByProjeto(findById(id));
 	}
 
 }
