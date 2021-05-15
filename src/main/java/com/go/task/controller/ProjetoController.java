@@ -36,7 +36,7 @@ public class ProjetoController {
 		return ResponseEntity.ok(projetoService.findById(id));
 	}
 
-	@GetMapping("/all")
+	@GetMapping
 	public ResponseEntity<List<Projeto>> buscarTodos() {
 		return ResponseEntity.ok(projetoService.findAll());
 	}
